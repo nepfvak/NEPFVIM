@@ -1,8 +1,6 @@
 # NEPFVIM
 A clean, beginner-friendly Neovim config built on [normie-nvim](https://github.com/lcsmuller/normie-nvim) with NvChad's base46 theme engine bolted on for 68 beautiful themes and a live theme picker.
 
-![dashboard](assets/normie-nvim.png)
-
 
 <img width="2506" height="1345" alt="image" src="https://github.com/user-attachments/assets/73aa14da-be85-4bc4-9425-9d3cc65289c7" />
 <img width="2507" height="1345" alt="image" src="https://github.com/user-attachments/assets/70a33cb2-62d1-4778-9c6c-aac8b5b19a2a" />
