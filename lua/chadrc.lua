@@ -1,5 +1,5 @@
 ---@type ChadrcConfig
 local M = {}
-M.base46 = { theme = 'radium' }
+M.base46 = { theme = "chadracula-evondev" }
 M.nvdash = { load_on_startup = false }
 return M

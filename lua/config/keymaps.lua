@@ -113,9 +113,16 @@ map('n', '<leader>rr', function()
 end, { desc = 'Reload config' })
 
 -- ── NvChad UI ────────────────────────────────────────────────────────────────
-map('n', '<leader>th', function()
-  require('nvchad.themes').open()
-end, { desc = 'Theme picker' })
+vim.keymap.set("n", "<leader>th", function()
+local buf = vim.api.nvim_get_current_buf()
+local ft = vim.bo[buf].filetype
+if ft == "snacks_dashboard" then
+  vim.defer_fn(function()
+  vim.cmd("close")
+  end, 100)
+  end
+  require("nvchad.themes").open()
+  end, { desc = "Theme Switcher" })
 map('n', '<leader>ch', function()
   require('nvchad.cheatsheet').open()
 end, { desc = 'Cheatsheet' })
