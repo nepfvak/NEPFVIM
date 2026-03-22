@@ -1,82 +1,169 @@
-# Normie Neovim
+# NEPFVIM
+A clean, beginner-friendly Neovim config built on [normie-nvim](https://github.com/lcsmuller/normie-nvim) with NvChad's base46 theme engine bolted on for 68 beautiful themes and a live theme picker.
 
-A simple, pre-configured Neovim setup for beginners. No fluff, just works.
+![dashboard](assets/normie-nvim.png)
 
-![Normie Neovim](assets/normie-nvim.png)
+---
 
-## Install
+## Features
 
-```bash
-curl -fsSL https://gitlab.com/theblackdon/normie-nvim/-/raw/main/install.sh | bash
-```
+- **68 themes** via NvChad's base46 engine with a live picker (`<Space>th`)
+- **Snacks.nvim** — file explorer, fuzzy finder, dashboard, notifications, lazygit
+- **blink.cmp** — fast autocompletion with LuaSnip snippets
+- **LSP** — lua, python, typescript, rust, c/c++, bash, html, css, hyprland and more
+- **Treesitter** — syntax highlighting + textobjects
+- **Conform + nvim-lint** — format on save, per-language linters
+- **Gitsigns** — inline git diff, hunk staging
+- **Which-key** — keymap hints as you type
+- **OpenCode** — AI coding assistant (Gemini, Claude, ChatGPT)
+- **mini.nvim suite** — surround, pairs, comments, move, cursorword and more
 
-Then restart your shell and run: `nvim`
+---
 
 ## Requirements
 
-- Arch, Fedora, or Debian/Ubuntu
-- curl
-- sudo access
+- Neovim >= 0.10
+- Git
+- A [Nerd Font](https://www.nerdfonts.com/) (config uses JetBrains Mono Nerd Font)
+- `ripgrep` — for live grep (`rg`)
+- `luacheck` — for Lua linting (`yay -S luacheck` on CachyOS/Arch)
+- `opencode` — AI assistant (`yay -S opencode-bin` on CachyOS/Arch)
+- Optional: `lazygit` for `<Space>gg`
 
-The installer handles everything else (neovim, node, rust, plugins, LSPs).
+---
 
-## Keybindings
+## Install
 
-Leader key: `Space`
+> **Back up your existing config first if you have one:**
+> ```bash
+> mv ~/.config/nvim ~/.config/nvim.bak
+> ```
 
-### Main Menu (press `<leader>`)
+```bash
+git clone https://github.com/nepfvak/nepfvim.git ~/.config/nvim
+nvim
+```
 
-![Main Menu](assets/menu.png)
+Lazy will bootstrap itself and install all plugins on first launch. Once it's done, run:
 
-| Key | Description |
-|-----|-------------|
-| `e` | 📁 File Explorer |
-| `<space>` | 🔍 Smart Find Files |
-| `b` | 📄 +Buffer |
-| `d` | 🐛 +Debug |
-| `f` | 📂 +Files |
-| `g` | 📦 +Git |
-| `S` | ⚙️ +Settings |
+```
+:Lazy build base46
+```
 
-### File Explorer (press `<leader>e`)
+Then restart Neovim and you're good to go.
 
-| Key / Mouse | Action |
-|-------------|--------|
-| `f` / Right-click | Open File Menu |
-| `d` / `<C-d>` | Delete |
+---
 
-![File Menu](assets/file-menu.png)
+## AI Assistant Setup (OpenCode)
 
-**File Menu Options:**
+OpenCode supports Gemini (free), Claude, and ChatGPT. Get your API keys and add them to your shell — **never put them in the config files**.
 
-1. 📁 Add new file/dir
-2. ✏️ Rename
-3. 📋 Copy
-4. 📑 Paste
-5. 📤 Move
-6. 🗑️ Delete
-7. 📎 Yank path
-8. 🔓 Open with system
-9. 📂 Close directory
-10. 🔄 Refresh
+**Fish:**
+```bash
+echo 'set -x GEMINI_API_KEY "your-key-here"' >> ~/.config/fish/config.fish
+echo 'set -x ANTHROPIC_API_KEY "your-key-here"' >> ~/.config/fish/config.fish
+echo 'set -x OPENAI_API_KEY "your-key-here"' >> ~/.config/fish/config.fish
+source ~/.config/fish/config.fish
+```
 
-### Common Actions
+**Bash/Zsh:**
+```bash
+echo 'export GEMINI_API_KEY="your-key-here"' >> ~/.bashrc
+echo 'export ANTHROPIC_API_KEY="your-key-here"' >> ~/.bashrc
+echo 'export OPENAI_API_KEY="your-key-here"' >> ~/.bashrc
+source ~/.bashrc
+```
 
+Get a free Gemini API key at [aistudio.google.com](https://aistudio.google.com).
+
+---
+
+## Key Bindings
+
+### General
 | Key | Action |
 |-----|--------|
-| `<leader>ff` | Find files |
-| `<leader>fr` | Recent files |
-| `<leader>fb` | Buffers |
-| `<Tab>` / `<S-Tab>` | Next / Prev buffer |
-| `<C-s>` | Save |
-| `gd` | Go to definition |
-| `gr` | Find references |
+| `<Space>` | Leader key |
+| `;` | Command mode |
+| `kj` | Exit insert mode |
+| `<C-s>` | Save file |
+
+### Theme & UI
+| Key | Action |
+|-----|--------|
+| `<Space>th` | Theme picker (68 themes, live preview) |
+| `<Space>ch` | Cheatsheet |
+
+### File Navigation
+| Key | Action |
+|-----|--------|
+| `<Space>e` | File explorer |
+| `<Space><Space>` | Find files |
+| `<Space>fs` | Live grep |
+| `<Space>fr` | Recent files |
+
+### LSP
+| Key | Action |
+|-----|--------|
+| `<leader>gd` | Go to definition |
+| `gi` | Go to implementations |
 | `K` | Hover docs |
-| `<leader>gg` | Lazygit |
-| `<c-/>` | Terminal |
+| `<Space>ca` | Code action |
+| `<Space>rn` | Rename symbol |
+| `<Space>cf` | Format file |
+| `<leader>[d` / `<leader>]d` | Prev/next diagnostic |
 
-## Troubleshooting
+### Git
+| Key | Action |
+|-----|--------|
+| `]h` / `[h` | Next/prev hunk |
+| `<Space>ghs` | Stage hunk |
+| `<Space>ghr` | Reset hunk |
+| `<Space>ghb` | Blame line |
+| `<Space>ghd` | Diff this |
 
-Run `:checkhealth` to verify everything is working.
+### AI (OpenCode)
+| Key | Action |
+|-----|--------|
+| `<Space>oc` | Open OpenCode in vertical split |
 
-Your old config is backed up to `~/.config/nvim.backup.<timestamp>`
+### Windows & Splits
+| Key | Action |
+|-----|--------|
+| `<C-h/j/k/l>` | Navigate windows |
+| `<Space>ss` | Split vertically |
+| `<Space>sh` | Split horizontally |
+| `<Space>sv` | Equalize splits |
+| `<Space>sl` | Close split |
+
+### Tabs
+| Key | Action |
+|-----|--------|
+| `L` | Next tab |
+| `H` | Prev tab |
+| `<Space>tt` | New tab |
+| `<Space>tl` | Close tab |
+
+---
+
+## Updating
+
+```bash
+cd ~/.config/nvim
+git pull
+```
+
+Then inside Neovim:
+
+```
+:Lazy sync
+```
+
+---
+
+## Credits
+
+- [normie-nvim](https://github.com/lcsmuller/normie-nvim) — the base config
+- [NvChad](https://github.com/NvChad/NvChad) — base46 theme engine
+- [folke](https://github.com/folke) — lazy.nvim, snacks.nvim, which-key, noice, todo-comments, persistence
+- [opencode-ai](https://opencode.ai) — AI coding assistant
