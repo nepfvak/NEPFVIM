@@ -67,7 +67,14 @@ map('v', 'd', '"_d', { desc = 'Delete without yanking' })
 map('n', 'J', 'mzJ`z', { desc = 'Join lines (keep cursor)' })
 
 -- ── Explorer (Snacks) ────────────────────────────────────────────────────────
-map('n', '<leader>e', '<cmd>lua Snacks.explorer.open()<CR>', { desc = 'File explorer' })
+map('n', '<leader>e', function()
+local ft = vim.bo[vim.api.nvim_get_current_buf()].filetype
+if ft == 'snacks_explorer' then
+  vim.cmd('wincmd p')
+  else
+    Snacks.explorer({ cwd = vim.g.snacks_explorer_cwd })
+    end
+    end, { desc = 'File explorer' })
 
 -- ── Snacks picker (replaces Telescope) ──────────────────────────────────────
 map('n', '<leader>ff', '<cmd>lua Snacks.picker.files()<CR>', { desc = 'Find files' })
