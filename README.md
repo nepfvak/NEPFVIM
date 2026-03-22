@@ -34,26 +34,32 @@ A clean, beginner-friendly Neovim config built on [normie-nvim](https://github.c
 
 ## Install
 
+### One-line install (recommended)
+```bash
+bash <(curl -s https://raw.githubusercontent.com/nepfvak/nepfvim/main/install.sh)
+```
+
+This will:
+- Detect your OS (Arch, Fedora, Debian/Ubuntu)
+- Install all dependencies (neovim, git, ripgrep, fd, fzf, etc.)
+- Install Rust via rustup
+- Install Node.js via nvm
+- Back up any existing Neovim config to `~/.config/nvim.backup.<timestamp>`
+- Clone and install this config
+- Bootstrap all plugins automatically
+
+### Manual install
+
 > **Back up your existing config first if you have one:**
 > ```bash
 > mv ~/.config/nvim ~/.config/nvim.bak
 > ```
-
 ```bash
 git clone https://github.com/nepfvak/nepfvim.git ~/.config/nvim
 nvim
 ```
 
-Lazy will bootstrap itself and install all plugins on first launch. Once it's done, run:
-
-```
-:Lazy build base46
-```
-
-Then restart Neovim and you're good to go.
-
----
-
+Lazy will bootstrap itself and install all plugins on first launch.
 ## AI Assistant Setup (OpenCode)
 
 OpenCode supports Gemini (free), Claude, and ChatGPT. Get your API keys and add them to your shell — **never put them in the config files**.
