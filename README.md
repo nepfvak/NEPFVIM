@@ -1,4 +1,5 @@
- _        _______  _______  _______          _________ _______ 
+```
+_        _______  _______  _______          _________ _______ 
 ( (    /|(  ____ \(  ____ )(  ____ \|\     /|\__   __/(       )
 |  \  ( || (    \/| (    )|| (    \/| )   ( |   ) (   | () () |
 |   \ | || (__    | (____)|| (__    | |   | |   | |   | || || |
@@ -6,6 +7,7 @@
 | | \   || (      | (      | (       \ \_/ /    | |   | |   | |
 | )  \  || (____/\| )      | )        \   /  ___) (___| )   ( |
 |/    )_)(_______/|/       |/          \_/   \_______/|/     \|
+```
 A clean, beginner-friendly Neovim config built on [normie-nvim](https://github.com/lcsmuller/normie-nvim) with NvChad's base46 theme engine bolted on for 68 beautiful themes and a live theme picker.
 
 
