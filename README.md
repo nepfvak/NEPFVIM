@@ -51,6 +51,7 @@ A clean, beginner-friendly Neovim config built on [normie-nvim](https://github.c
 bash <(curl -s https://raw.githubusercontent.com/nepfvak/nepfvim/main/install.sh)
 ```
 
+### Use this if you use fish
 ```no bash (fish)
 curl -s https://raw.githubusercontent.com/nepfvak/nepfvim/main/install.sh | bash
 ```
