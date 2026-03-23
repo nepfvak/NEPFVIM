@@ -51,6 +51,10 @@ A clean, beginner-friendly Neovim config built on [normie-nvim](https://github.c
 bash <(curl -s https://raw.githubusercontent.com/nepfvak/nepfvim/main/install.sh)
 ```
 
+```no bash (fish)
+curl -s https://raw.githubusercontent.com/nepfvak/nepfvim/main/install.sh | bash
+```
+
 This will:
 - Detect your OS (Arch, Fedora, Debian/Ubuntu)
 - Install all dependencies (neovim, git, ripgrep, fd, fzf, etc.)
